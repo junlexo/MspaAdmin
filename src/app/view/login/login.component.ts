@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {environment} from '../../../environments/environment';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 // Variable in assets/js/scripts.js file
@@ -17,15 +16,19 @@ export class AdminLoginComponent implements OnInit {
 
   ngOnInit() {
      // Actualiza la barra latera y el footer
-    // AdminLogin.init();
+    // AdminLogin.init();    
+    if(localStorage.getItem('token'))
+    {
+      this.router.navigate(['/admin']);
+    }
   }
-  onSubmit(f) {            
+  onSubmit(f) {               
     this._authService.signIn({username: f.value.username, password: f.value.password})
         .subscribe(
           data => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
-            this.router.navigate(['/create']);
+            this.router.navigate(['/admin']);
           },
           error => {
             console.error(error);

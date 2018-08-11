@@ -5,26 +5,89 @@
 	</div>
 	<form class="uk-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
 		<fieldset>
-				<legend>Register Form</legend>
-				<div class="uk-form-row">
-				<div [hidden]="username.valid || !username.touched" class="uk-alert">
-					username is required
-				</div>
-					<input type="text" required ngModel name="username" #username="ngModel" placeholder="" [ngClass]="{ 'uk-width-1-1': true }">
-				</div>
-				<div class="uk-form-row">
-				<div [hidden]="email.valid || !email.touched" class="uk-alert">
-					email is required
-				</div>
-					<input type="text" required ngModel name="email" #email="ngModel" placeholder="" [ngClass]="{ 'uk-width-1-1': true }">
-				</div>
-				<div class="uk-form-row">
-					<div [hidden]="password.valid || !password.touched" class="uk-alert">
-						password is required
-					</div>
-					<input type="password" ngModel name="password" #password="ngModel" placeholder="" ngClass="uk-width-1-1">
-				</div>
-				<button class="uk-button uk-margin-top" type="submit">Register</button>
+			<div class="row">
+		        <div class="col-md-3"></div>
+		        <div class="col-md-6">
+		            <h2>Please Login</h2>
+		            <hr>
+		        </div>
+		    </div>
+			<div class="row">
+		       <div class="col-md-3"></div>
+		        <div class="col-md-6">
+		            <div class="form-group has-danger">
+		                <label class="sr-only" for="username">Username</label>
+		                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+		                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+		                    <input type="text" name="username" ngModel #username="ngModel" class="form-control" id="username"
+		                           placeholder="Username" required autofocus>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="col-md-3">
+		            <div [hidden]="username.valid || !username.touched" >
+		                <span class="text-danger align-middle">
+		                    <i class="fa fa-close"></i> Username require
+		                </span>
+		            </div>
+		            <div [hidden]="error != 1" >
+		                <span class="text-danger align-middle">
+		                    <i class="fa fa-close"></i> Username already exist
+		                </span>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="row">
+		       <div class="col-md-3"></div>
+		        <div class="col-md-6">
+		            <div class="form-group has-danger">
+		                <label class="sr-only" for="email">E-Mail Address</label>
+		                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+		                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+		                    <input type="text" name="email" ngModel #email="ngModel" class="form-control" id="email"
+		                           placeholder="Email" required autofocus>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="col-md-3">
+		            <div [hidden]="email.valid || !email.touched" >
+		                <span class="text-danger align-middle">
+		                    <i class="fa fa-close"></i> Email error
+		                </span>
+		            </div>
+		            <div [hidden]="error != 2" >
+		                <span class="text-danger align-middle">
+		                    <i class="fa fa-close"></i> Email already exist
+		                </span>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="row">
+		        <div class="col-md-3"></div>
+		        <div class="col-md-6">
+		            <div class="form-group">
+		                <label class="sr-only" for="password">Password</label>
+		                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+		                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+		                    <input type="password" ngModel name="password" #password="ngModel" class="form-control" id="password"
+		                           placeholder="Password" required >
+		                </div>
+		            </div>
+		        </div>
+		        <div class="col-md-3">
+		            <div [hidden]="password.valid || !password.touched">
+		                <span class="text-danger align-middle">
+		                <i class="fa fa-close"></i> Pasword error    
+		                </span>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="row" style="padding-top: 1rem">
+		        <div class="col-md-3"></div>
+		        <div class="col-md-6">
+		            <button class="btn btn-primary" type="submit">Register</button>
+		        </div>
+		    </div>		
 		</fieldset>
 	</form>
 	</div>

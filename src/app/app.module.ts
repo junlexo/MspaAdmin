@@ -21,6 +21,7 @@ import { AdminControlSidebarComponent } from './admin/admin-control-sidebar/admi
 import { AdminDashboard1Component } from './admin/admin-dashboard1/admin-dashboard1.component';
 import { AdminLoginComponent } from './view/login/login.component';
 import { AdminRegisterComponent } from './view/register/register.component';
+import { ListUserComponent } from './view/list/list.component';
 import { AuthService } from './view/auth.service';
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthService } from './view/auth.service';
     StarterFooterComponent,
     StarterControlSidebarComponent,
     AdminLoginComponent,
-    AdminRegisterComponent
+    AdminRegisterComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,

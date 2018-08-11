@@ -12,10 +12,8 @@ export class AuthService {
 	}
 
 	signIn(user: any) {
-    const body = JSON.stringify(JSON.stringify({
-      cmd: "cmd",
-      body: user}));
-    const headers = new Headers({'Content-Type': 'application/json' });
+    const body = JSON.stringify(user);
+    const headers = new Headers({'Content-Type': 'application/json;charset=UTF-8' });
     return this._http.post(environment.APIServer +'/users/signin', body, {headers: headers})
                .map( response => {
 								 if(response) {
@@ -26,36 +24,31 @@ export class AuthService {
   }
   register(user: any)
   {
-  	const body = JSON.stringify(JSON.stringify({
-      cmd: "cmd",
-      body: user}));
-    const headers = new Headers();
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Request-Headers', 'x-requested-with, content-type');
-    headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+  	const body = JSON.stringify(user);
+     const headers = new Headers();     
+     	headers.append('Content-Type', 'application/json;charset=UTF-8');	     	                         
     return this._http.post(environment.APIServer + '/users/register', body, {headers: headers})
                .map( response => {								 
 								 return response.json();
 							 });
   }
   getUserId(id){
-  	return this._http.get("http://localhost:3000/users/single/"+id)
+  	return this._http.get(environment.APIServer +"/users/single/"+id)
 				   .map(res => res.json());
   }
 
   getUser(){
-  	return this._http.get("http://localhost:3000/users/all")
+  	return this._http.get(environment.APIServer +"/users/all")
 				   .map(res => res.json());
   }
   removeUser(username){
-	  	return this._http.get("http://localhost:3000/users/remove/"+username)
+	  	return this._http.get(environment.APIServer +"/users/remove/"+username)
 					   .map(res => res.json());	
 	}
 	changeAcount(user: any){
 		const body = JSON.stringify(user);
 	    const headers = new Headers({'Content-Type': 'application/json' });
-	    return this._http.post('http://localhost:3000/users/update', body, {headers: headers})
+	    return this._http.post(environment.APIServer +'/users/update', body, {headers: headers})
 	               .map( response => {								 
 									 return response.json();
 								 });

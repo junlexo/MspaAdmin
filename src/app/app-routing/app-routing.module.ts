@@ -7,7 +7,7 @@ import { AdminRegisterComponent } from './../view/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { ListUserComponent } from './../view/list/list.component';
 @NgModule({
   imports: [
     RouterModule.forRoot([
@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
       { path: 'starter', component: StarterComponent },
       { path: 'login', component: AdminLoginComponent },
       { path: 'register', component: AdminRegisterComponent },
+      { path: 'list', component: ListUserComponent },
     ])
   ],
   declarations: [],
