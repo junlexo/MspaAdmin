@@ -2,6 +2,8 @@ import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { StarterComponent } from './starter/starter.component';
@@ -17,7 +19,9 @@ import { AdminContentComponent } from './admin/admin-content/admin-content.compo
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminControlSidebarComponent } from './admin/admin-control-sidebar/admin-control-sidebar.component';
 import { AdminDashboard1Component } from './admin/admin-dashboard1/admin-dashboard1.component';
-
+import { AdminLoginComponent } from './view/login/login.component';
+import { AdminRegisterComponent } from './view/register/register.component';
+import { AuthService } from './view/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +30,19 @@ import { AdminDashboard1Component } from './admin/admin-dashboard1/admin-dashboa
     StarterLeftSideComponent,
     StarterContentComponent,
     StarterFooterComponent,
-    StarterControlSidebarComponent
+    StarterControlSidebarComponent,
+    AdminLoginComponent,
+    AdminRegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

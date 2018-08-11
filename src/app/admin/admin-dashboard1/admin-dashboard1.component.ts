@@ -7,6 +7,7 @@ import { } from 'jqueryui';
 import { } from 'daterangepicker';
 import { } from 'jquery.slimscroll';
 import * as moment from 'moment';
+import {environment} from '../../../environments/environment'
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
 

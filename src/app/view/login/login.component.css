@@ -1,0 +1,10 @@
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+.form-control-feedback {
+	top: 0;
+    left: 10px;
+    width: fit-content;
+    height: inherit;
+}
