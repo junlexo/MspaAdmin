@@ -29,22 +29,24 @@ export class AdminEmployeeGroupAddComponent implements OnInit {
      // Update the AdminLTE layouts
     AdminLTE.init();
     this._routeParams.params.subscribe(params => {      
-      let id = params['id'];          
+      let id = params['id'];               
       if(!id)
         this.isAdd = true;      
-      else
+      else{
         this.isAdd = false;
-      this.empGrService.getEmpGrId(id)
-          .subscribe( json => {
-            console.log(json);            
-            if(!json.error)
-            {              
-              this.notFound = false;
-              this.singleEmpr = json.results;              
-            }
-            else
-              this.notFound = true;
-      });
+      
+        this.empGrService.getEmpGrId(id)
+            .subscribe( json => {
+              console.log(json);            
+              if(!json.error)
+              {              
+                this.notFound = false;
+                this.singleEmpr = json.results;              
+              }
+              else
+                this.notFound = true;
+        });
+      }
     });
 
   }
@@ -54,12 +56,15 @@ export class AdminEmployeeGroupAddComponent implements OnInit {
     else
       this.updateEmpGr(f);
   }
-  addEmpGr(f) {
+  addEmpGr(f) {    
     this.empGrService.addEmpGr({name: f.value.name, code: f.value.code}).subscribe(data => {
       this.error = data.error;
       if(!data.error)
       {
         this.saveSuccess = true;
+        setTimeout(function(){
+           _that.router.navigate(['/admin/groupEmployeeList']);
+        },1000);
       }
       else
       {
@@ -70,12 +75,16 @@ export class AdminEmployeeGroupAddComponent implements OnInit {
       console.log(error);
     });
   }
-  updateEmpGr(f) {
-    this.empGrService.updateEnpGr({name: f.value.name, code: f.value.code}).subscribe(data => {
+  updateEmpGr(f) {        
+    this.empGrService.updateEnpGr({name: $('#name').val(), code: $('#code').val()}).subscribe(data => {
       this.error = data.error;
       if(!data.error)
       {
         this.saveSuccess = true;
+        setTimeout(function()
+        {
+           this.saveSuccess = false;
+        },1000);
       }
       else
       {

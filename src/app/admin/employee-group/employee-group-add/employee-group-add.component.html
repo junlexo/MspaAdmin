@@ -22,6 +22,7 @@
 			                <div class="input mb-2 mr-sm-2 mb-sm-0">			                    
 			                    <input type="text" name="code" ngModel #code="ngModel" value="{{singleEmpr.code}}" class="form-control" id="code"
 			                           placeholder="Administrator" required autofocus disabled={{!isAdd}}>
+	                           <input type="hidden" name="idEmp" ngModel #idEmp="ngModel" value="{{singleEmpr.id}}" class="form-control" id="idEmp">
 			                </div>
 			            </div>
 			        </div>
