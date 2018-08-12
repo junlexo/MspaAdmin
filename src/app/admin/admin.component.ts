@@ -15,8 +15,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // add the the body classes
     this.body.classList.add('skin-blue');
-    this.body.classList.add('sidebar-mini');
-    console.log(localStorage.getItem('token'));
+    this.body.classList.add('sidebar-mini');    
     if(!localStorage.getItem('token'))
     {
       this.router.navigate(['/login']);

@@ -17,15 +17,11 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {
      // Actualiza la barra latera y el footer
     // AdminLogin.init();    
-    if(localStorage.getItem('token'))
-    {
-      this.router.navigate(['/admin']);
-    }
   }
   onSubmit(f) {               
     this._authService.signIn({username: f.value.username, password: f.value.password})
         .subscribe(
-          data => {
+          data => {            
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
             this.router.navigate(['/admin']);

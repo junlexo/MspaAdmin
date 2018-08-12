@@ -1,0 +1,76 @@
+<div class="content-wrapper">
+	<div class="uk-grid">
+		<div class="uk-width-large-5-10 uk-container-center">
+		<div class="alert alert-success" *ngIf="saveSuccess">
+		    <strong>Success!</strong>
+		</div>
+		<form class="uk-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+			<fieldset>
+				<div class="row">
+			        <div class="col-md-3"></div>
+			        <div class="col-md-6">
+			        	<h2 *ngIf="isAdd; else elseBlock">Thêm Nhóm Nhân Viên</h2>
+						<ng-template #elseBlock><h2>Sửa Nhóm Nhân Viên</h2></ng-template>			            
+			            <hr>
+			        </div>
+			    </div>
+				<div class="row">
+			       <div class="col-md-3"></div>
+			        <div class="col-md-6">
+			            <div class="form-group has-danger">
+			                <label for="code">Mã Nhóm Nhân Viên</label>
+			                <div class="input mb-2 mr-sm-2 mb-sm-0">			                    
+			                    <input type="text" name="code" ngModel #code="ngModel" value="{{singleEmpr.code}}" class="form-control" id="code"
+			                           placeholder="Administrator" required autofocus disabled={{!isAdd}}>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="col-md-3">
+			            <div [hidden]="code.valid || !code.touched" >
+			                <span class="text-danger align-middle">
+			                    <i class="fa fa-close"></i> Không để trống mã nhóm
+			                </span>
+			            </div>
+			            <div [hidden]="error != 1" >
+			                <span class="text-danger align-middle">
+			                    <i class="fa fa-close"></i> Mã nhóm đã tồn tại
+			                </span>
+			            </div>
+			        </div>
+			    </div>
+			    <div class="row">
+			       <div class="col-md-3"></div>
+			        <div class="col-md-6">
+			            <div class="form-group has-danger">
+			                <label for="name">Tên Nhóm Nhân Viên</label>
+			                <div class="input mb-2 mr-sm-2 mb-sm-0">			                    
+			                    <input type="text" name="name" ngModel #name="ngModel" value="{{singleEmpr.name}}" class="form-control" id="name"
+			                           placeholder="Nhóm Người Quản Trị" required autofocus>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="col-md-3">
+			            <div [hidden]="name.valid || !name.touched" >
+			                <span class="text-danger align-middle">
+			                    <i class="fa fa-close"></i> Không để trống tên nhóm
+			                </span>
+			            </div>
+			            <div [hidden]="error != 2" >
+			                <span class="text-danger align-middle">
+			                    <i class="fa fa-close"></i> Tên nhóm đã tồn tại
+			                </span>
+			            </div>
+			        </div>
+			    </div>			    
+			    <div class="row" style="padding-top: 1rem">
+			        <div class="col-md-3"></div>
+			        <div class="col-md-6">
+			            <button class="btn btn-primary" type="submit">Lưu Lại</button>
+			            <a class="btn btn-danger" (click)="clear(f)">Clear</a>
+			        </div>
+			    </div>		
+			</fieldset>
+		</form>
+		</div>
+	</div>
+</div>

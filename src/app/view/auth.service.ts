@@ -12,16 +12,16 @@ export class AuthService {
 	}
 
 	signIn(user: any) {
-    const body = JSON.stringify(user);
-    const headers = new Headers({'Content-Type': 'application/json;charset=UTF-8' });
-    return this._http.post(environment.APIServer +'/users/signin', body, {headers: headers})
-               .map( response => {
+	const body = JSON.stringify(user);
+	const headers = new Headers({'Content-Type': 'application/json;charset=UTF-8' });
+	return this._http.post(environment.APIServer +'/users/signin', body, {headers: headers})
+	           .map( response => {
 								 if(response) {
 									 this.authenticated = true;
 								 }
 								 return response.json();
 							 })
-  }
+  	}
   register(user: any)
   {
   	const body = JSON.stringify(user);
