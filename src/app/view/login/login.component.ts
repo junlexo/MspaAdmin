@@ -18,6 +18,7 @@ export class AdminLoginComponent implements OnInit {
      // Actualiza la barra latera y el footer
     // AdminLogin.init();    
   }
+
   onSubmit(f) {               
     this._authService.signIn({username: f.value.username, password: f.value.password})
         .subscribe(

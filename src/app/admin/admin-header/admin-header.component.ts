@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { } from 'jquery';
+import * as moment from 'moment';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-admin-header',
@@ -11,5 +14,11 @@ export class AdminHeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  changeLanguage() {    
+    if($("#language")[0].checked)
+  	  localStorage.setItem("language", "en");
+     else
+       localStorage.setItem("language", "vn");
+  	location.reload();
+  }
 }

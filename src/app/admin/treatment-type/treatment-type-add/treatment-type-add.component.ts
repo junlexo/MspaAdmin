@@ -5,43 +5,37 @@ import * as moment from 'moment';
 import 'rxjs/add/operator/map';
 import {Router, ActivatedRoute} from '@angular/router';
 import {environment} from '../../../../environments/environment';
-import { EmployeeGroupService } from '../employee-group.service';
+import { TreatmentTypeService } from '../treatment-type.service';
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
 var _that = null;
 @Component({
-  //ten the hien thi tren html
-  selector: 'employee-group-add',
-  //file html se su dung cho component
-  templateUrl: './employee-group-add.component.html',
-  //file css se su dung cho component
-  styleUrls: ['./employee-group-add.component.css']
+  selector: 'treatment-type',
+  templateUrl: './treatment-type-add.component.html',
+  styleUrls: ['./treatment-type-add.component.css']
 })
-//tao export class de file khac goi su dung
-export class AdminEmployeeGroupAddComponent implements OnInit {
+export class AdminTreatmentTypeAddComponent implements OnInit {
   error: number;
   saveSuccess: boolean;
   sub: string;
   singleEmpr = {};
   notFound: boolean;
   isAdd: boolean;
-  constructor(private router: Router, private empGrService: EmployeeGroupService, private _routeParams: ActivatedRoute) { 
+  constructor(private router: Router, private treatmentType: TreatmentTypeService, private _routeParams: ActivatedRoute) { 
     this.error = 0;
     _that = this;    
   }
   ngOnInit() {
-    // Update the AdminLTE layouts
+     // Update the AdminLTE layouts
     AdminLTE.init();
     this._routeParams.params.subscribe(params => {      
       let id = params['id'];               
       if(!id)
         this.isAdd = true;      
-      else{
-        this.isAdd = false;
-      
-        this.empGrService.getEmpGrId(id)
-            .subscribe( json => {
-              console.log(json);            
+      else {
+        this.isAdd = false;      
+        this.treatmentType.getTreatTId(id)
+            .subscribe( json => {           
               if(!json.error)
               {              
                 this.notFound = false;
@@ -61,7 +55,7 @@ export class AdminEmployeeGroupAddComponent implements OnInit {
       this.updateEmpGr(f);
   }
   addEmpGr(f) {    
-    this.empGrService.addEmpGr({name: f.value.name, code: f.value.code}).subscribe(data => {
+    this.treatmentType.addTreatT({name: f.value.name, code: f.value.code}).subscribe(data => {
       this.error = data.error;
       if(!data.error)
       {
@@ -80,7 +74,7 @@ export class AdminEmployeeGroupAddComponent implements OnInit {
     });
   }
   updateEmpGr(f) {        
-    this.empGrService.updateEnpGr({name: $('#name').val(), code: $('#code').val()}).subscribe(data => {
+    this.treatmentType.updateTreatT({name: $('#name').val(), code: $('#code').val()}).subscribe(data => {
       this.error = data.error;
       if(!data.error)
       {

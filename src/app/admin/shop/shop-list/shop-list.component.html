@@ -1,0 +1,40 @@
+<div class="content-wrapper">
+	<section class="content-header">
+		<h1>
+			List Shop
+			<small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+			<li class="active">List List Shop</li>
+		</ol>
+	</section>
+	<section class="content">
+		<div class="uk-grid">		
+			<div class="table-responsive">
+			    <table class="table">
+			      <thead>
+			        <tr>
+			          <th>#</th>
+			          <th>Tên Cửa Hàng</th>
+			          <th>{{message.adress}}</th>	
+			          <th>Loại dịch vụ</th>		          
+			          <th>Quận</th>
+			          <th>Thành phố</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			        <tr *ngFor="let shop of ShopList; let i=index">
+			          <td>{{i+1}}</td>
+			          <td><a class="btn btn-link" routerLink="/admin/groupEmployee/{{shop.id}}" routerLinkActive="active">{{shop.shop_name}}</a></td>
+			          <td>{{shop.address}}</td>
+			          <td>{{shop.service_type}}</td>
+			          <td>{{shop.district}}</td>
+			          <td>{{shop.province}}</td>			          
+			        </tr>
+			      </tbody>
+			    </table>
+			</div>
+		</div>
+	</section>
+</div>

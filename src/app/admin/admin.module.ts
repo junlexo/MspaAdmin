@@ -2,6 +2,9 @@ import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { AdminDashboard1Component } from './admin-dashboard1/admin-dashboard1.component';
 import { AdminEmployeeGroupAddComponent } from './employee-group/employee-group-add/employee-group-add.component';
 import { AdminEmployeeGroupListComponent } from './employee-group/employee-group-list/employee-group-list.component';
+import { AdminTreatmentTypeListComponent } from './treatment-type/treatment-type-list/treatment-type-list.component';
+import { AdminTreatmentTypeAddComponent } from './treatment-type/treatment-type-add/treatment-type-add.component';
+import { AdminShopListComponent } from './shop/shop-list/shop-list.component';
 import { AdminControlSidebarComponent } from './admin-control-sidebar/admin-control-sidebar.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { AdminContentComponent } from './admin-content/admin-content.component';
@@ -15,6 +18,8 @@ import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { EmployeeGroupService } from './employee-group/employee-group.service';
+import { TreatmentTypeService } from './treatment-type/treatment-type.service';
+import { ShopService } from './shop/shop.service';
 
 @NgModule({
   imports: [
@@ -34,9 +39,12 @@ import { EmployeeGroupService } from './employee-group/employee-group.service';
     AdminEmployeeGroupAddComponent,
     AdminEmployeeGroupListComponent,
     AdminDashboard1Component,
-    AdminDashboard2Component
+    AdminDashboard2Component,
+    AdminTreatmentTypeAddComponent,
+    AdminTreatmentTypeListComponent,
+    AdminShopListComponent
   ],
-  providers: [EmployeeGroupService],
+  providers: [EmployeeGroupService, TreatmentTypeService, ShopService],
   exports: [AdminComponent]
 })
 export class AdminModule { }

@@ -1,0 +1,39 @@
+<div class="content-wrapper">
+	<section class="content-header">
+		<h1>
+			List Employee Group
+			<small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+			<li class="active">List Employee Group</li>
+		</ol>
+	</section>
+	<section class="content">
+		<div class="uk-grid">		
+			<div class="table-responsive">
+			    <table class="table">
+			      <thead>
+			        <tr>
+			          <th>#</th>
+			          <th>Mã Nhóm Nhân Viên</th>
+			          <th>Tên Nhóm Nhân Viên</th>	
+			          <th>Action</th>		          
+			        </tr>
+			      </thead>
+			      <tbody>
+			        <tr *ngFor="let emp of Employee; let i=index">
+			          <td>{{i+1}}</td>
+			          <td><a class="btn btn-link" routerLink="/admin/treatmentType/{{emp.id}}" routerLinkActive="active">{{emp.code}}</a></td>
+			          <td>{{emp.name}}</td>
+			          <td>			          		
+							<a class="btn btn-primary" routerLink="/admin/treatmentType/{{emp.id}}" routerLinkActive="active">Sửa</a>
+							<a class="btn btn-danger" (click)="removeEmpG(emp.id)">Xóa</a>
+			          </td>			          
+			        </tr>
+			      </tbody>
+			    </table>
+			</div>
+		</div>
+	</section>
+</div>
