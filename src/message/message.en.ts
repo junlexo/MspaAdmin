@@ -1,3 +1,5 @@
 export const messageEN = {
- 	adress: "Address"
+ 	adress		: "Address",
+ 	language	: "Language",
+ 	admin		: "Admin"
 };

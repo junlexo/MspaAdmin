@@ -1,3 +1,5 @@
 export const messageVN = {
- 	adress: "Địa Chỉ"
+ 	adress:		"Địa Chỉ",
+ 	language:	"Ngôn Ngữ",
+ 	admin		: "Quản Trị"
 };
