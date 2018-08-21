@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 })
 export class AdminLoginComponent implements OnInit {
 	authenticated: boolean = false;
+  fail_login: boolean = false;
   constructor(private router: Router, private _authService: AuthService) { }
 
   ngOnInit() {
@@ -23,11 +24,20 @@ export class AdminLoginComponent implements OnInit {
     this._authService.signIn({username: f.value.username, password: f.value.password})
         .subscribe(
           data => {            
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('userId', data.userId);
-            this.router.navigate(['/admin']);
+            var error_code = data.error;
+            if(!error_code)
+            {
+              localStorage.setItem('token', data.token);
+              localStorage.setItem('userId', data.userId);
+              this.router.navigate(['/admin']);
+            }
+            else
+            {
+              this.fail_login = true;
+            }
           },
           error => {
+            this.fail_login = true;
             console.error(error);
           }
         );
