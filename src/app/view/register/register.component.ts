@@ -11,6 +11,7 @@ export class AdminRegisterComponent {
 	title: string = 'Register';
 	saveSuccess: boolean;
 	error: number;		
+	isDisconnect: boolean = false;
 	constructor(private router: Router, private _authService: AuthService ) {
 		this.error = 0;
 		_that = this;
@@ -31,6 +32,7 @@ export class AdminRegisterComponent {
 							this.saveSuccess = false;
 					},
 					error => {
+						this.isDisconnect = true;
 						console.error(error);
 					}
 				);

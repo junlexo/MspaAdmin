@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 export class AdminLoginComponent implements OnInit {
 	authenticated: boolean = false;
   fail_login: boolean = false;
+  isDisconnect: boolean = false;
   constructor(private router: Router, private _authService: AuthService) { }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class AdminLoginComponent implements OnInit {
             }
           },
           error => {
-            this.fail_login = true;
+            this.isDisconnect = true;
             console.error(error);
           }
         );

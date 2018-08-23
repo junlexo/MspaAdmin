@@ -3,6 +3,9 @@
 	<div class="alert alert-success" *ngIf="saveSuccess">
 	    <strong>Success!</strong>
 	</div>
+	<div class="alert alert-error" *ngIf="isDisconnect">
+        <strong>Cannot connect server!</strong>
+    </div>
 	<form class="uk-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
 		<fieldset>
 			<div class="row">
