@@ -5,6 +5,8 @@ import { AdminEmployeeGroupListComponent } from './employee-group/employee-group
 import { AdminTreatmentTypeListComponent } from './treatment-type/treatment-type-list/treatment-type-list.component';
 import { AdminTreatmentTypeAddComponent } from './treatment-type/treatment-type-add/treatment-type-add.component';
 import { AdminShopListComponent } from './shop/shop-list/shop-list.component';
+import { AdminShopAddComponent } from './shop/shop-add/shop-add.component';
+import { AdminShopEditComponent } from './shop/shop-edit/shop-edit.component';
 import { AdminControlSidebarComponent } from './admin-control-sidebar/admin-control-sidebar.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { AdminContentComponent } from './admin-content/admin-content.component';
@@ -20,6 +22,9 @@ import { HttpModule } from '@angular/http';
 import { EmployeeGroupService } from './employee-group/employee-group.service';
 import { TreatmentTypeService } from './treatment-type/treatment-type.service';
 import { ShopService } from './shop/shop.service';
+import { CountryService } from './country/country.service';
+import { ProvinceService } from './province/province.service';
+import { ServiceTypeService } from './service_type/service_type.service';
 
 @NgModule({
   imports: [
@@ -42,9 +47,11 @@ import { ShopService } from './shop/shop.service';
     AdminDashboard2Component,
     AdminTreatmentTypeAddComponent,
     AdminTreatmentTypeListComponent,
-    AdminShopListComponent
+    AdminShopListComponent,
+    AdminShopAddComponent,
+    AdminShopEditComponent
   ],
-  providers: [EmployeeGroupService, TreatmentTypeService, ShopService],
+  providers: [EmployeeGroupService, TreatmentTypeService, ShopService, CountryService, ProvinceService, ServiceTypeService],
   exports: [AdminComponent]
 })
 export class AdminModule { }

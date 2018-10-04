@@ -14,7 +14,7 @@ export class AuthService {
 	signIn(user: any) {
 	const body = JSON.stringify(user);
 	const headers = new Headers({'Content-Type': 'application/json;charset=UTF-8' });
-	return this._http.post(environment.APIServer +'/users/signin', body, {headers: headers})
+	return this._http.post(environment.APIServer +'/admin/signin', body, {headers: headers})
 	           .map( response => {
 								 if(response) {
 									 this.authenticated = true;
@@ -27,28 +27,28 @@ export class AuthService {
   	const body = JSON.stringify(user);
      const headers = new Headers();     
      	headers.append('Content-Type', 'application/json;charset=UTF-8');	     	                         
-    return this._http.post(environment.APIServer + '/users/register', body, {headers: headers})
+    return this._http.post(environment.APIServer + '/admin/register', body, {headers: headers})
                .map( response => {								 
 								 return response.json();
 							 });
   }
   getUserId(id){
-  	return this._http.get(environment.APIServer +"/users/single/"+id)
+  	return this._http.get(environment.APIServer +"/admin/single/"+id)
 				   .map(res => res.json());
   }
 
   getUser(){
-  	return this._http.get(environment.APIServer +"/users/all")
+  	return this._http.get(environment.APIServer +"/admin/all")
 				   .map(res => res.json());
   }
   removeUser(username){
-	  	return this._http.get(environment.APIServer +"/users/remove/"+username)
+	  	return this._http.get(environment.APIServer +"/admin/remove/"+username)
 					   .map(res => res.json());	
 	}
 	changeAcount(user: any){
 		const body = JSON.stringify(user);
 	    const headers = new Headers({'Content-Type': 'application/json' });
-	    return this._http.post(environment.APIServer +'/users/update', body, {headers: headers})
+	    return this._http.post(environment.APIServer +'/admin/update', body, {headers: headers})
 	               .map( response => {								 
 									 return response.json();
 								 });

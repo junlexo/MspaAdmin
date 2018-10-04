@@ -1,0 +1,236 @@
+<div class="content-wrapper">
+	<section class="content-header">
+		<h1>
+			Shop Information
+			<small>Control panel</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+			<li class="active" *ngIf="isRegistered">Register Shop</li>
+			<li class="active" *ngIf="!isRegistered">Edit Shop</li>
+		</ol>
+	</section>
+	<section class="content">
+	<!-- <ng-template *ngIf="formSubmit; then #photoUploadForm else #shopForm"></ng-template>	 -->
+	<form class="uk-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+		<fieldset [hidden]="formSubmit">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="shop_name">{{message.shop_name}}</label>
+				<input type="text" name="shop_name" class="form-control" id="shop_name" ngModel #shop_name='ngModel' value="{{shop.shop_name}}" placehoder value required disabled="{{!isRegistered}}">
+<!-- 			<div class="col-md-3">
+				<div [hidden]="shopName.valid || !shopName.touched" >
+					<span class="text-danger align-middle">
+						<i class="fa fa-close"></i> Shop name is required
+					</span>
+				</div>
+				<div [hidden]="error != 0" >
+					<span class="text-danger align-middle">
+						<i class="fa fa-close"></i> Shop name already existed
+					</span>
+				</div>-->
+			</div> 
+		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="address">{{message.address}}</label>
+				<input type="text" name="address" class="form-control" id="address" ngModel #address='ngModel' placehoder value="{{shop.shop_addr}}" required>
+				<div class="col-md-3">
+					<div [hidden]="address.valid || !address.touched" >
+						<span class="text-danger align-middle">
+							<i class="fa fa-close"></i> address is required
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="service_type">{{message.service_type}}</label>
+				<select class="custom-select d-block w-100" name="serviceID" id="serviceID" ngModel #serviceID='ngModel' value="{{shop.serviceID}}" required="">
+                  <option *ngFor=" let service of shop_services" [value]="service.serviceID">{{service.service_title}}</option>
+                </select>
+			</div>
+		</div>
+		<!-- <p></p> -->
+<!-- 		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-2 mb-3">
+				<label for="district">{{message.district}}</label>
+				<input type="text" name="district" class="form-control" id="district" ngModel #district='ngModel' placehoder value required> -->
+				<!-- <div class="col-md-3">
+					<div [hidden]="district.valid || !district.touched" >
+						<span class="text-danger align-middle">
+							<i class="fa fa-close"></i> district is required
+						</span>
+					</div>
+				</div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-2 mb-3">
+				<label for="provinceID">{{message.province}}</label>
+				<p></p>
+				<select class="custom-select d-block w-100" name="provinceID" id="provinceID" ngModel #provinceID='ngModel' value="{{shop.provinceID}}" required="">
+                  <option *ngFor="let province of provinces" [value]="province.provinceID">{{province.province_name}}</option>
+ <!--                  <option>Việt Nam</option>
+                  <option>US</option>
+                  <option>UK</option> -->
+                </select>
+				<!-- <div class="col-md-3">
+					<div [hidden]="province.valid || !province.touched" >
+						<span class="text-danger align-middle">
+							<i class="fa fa-close"></i> province is required
+						</span>
+					</div>
+				</div> -->
+			</div>
+<!-- 		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div> -->
+			<div class="col-md-4 mb-3">
+				<label for="countryID">{{message.country}}</label>
+				<p></p>
+				<select class="custom-select d-block w-100" name="countryID" id="countryID" ngModel #countryID='ngModel' (change)="getProvinces($event.target.value)" value="{{shop.countryID}}" required="">
+                  <option *ngFor="let country of countries" [value]="country.countryID" >{{country.country_name}}</option>
+ <!--                  <option>Việt Nam</option>
+                  <option>US</option>
+                  <option>UK</option> -->
+                </select>
+			</div>
+		</div>
+		<!-- <p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="detail_direction">{{message.detail_direction}}</label>
+				<a href="#" rel="dialog" ajaxify="/places/map/?id=248286005503837&amp;zoom=15" role="button" class="" tabindex="0"><div class="_4j7v _5bld"><img class="_a3f img" alt="" aria-label="Đính kèm bản đồ" src="https://external.fdad2-1.fna.fbcdn.net/static_map.php?v=1012&amp;osm_provider=2&amp;size=306x98&amp;zoom=15&amp;markers=16.03977120%2C108.22312117&amp;language=vi_VN" width="306" height="98"></div></a>
+			</div>
+		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="phone">{{message.phone}}</label>
+				<input type="text" name="phone" class="form-control" id="phone" ngModel #phone='ngModel' placehoder value required> -->
+<!-- 				<div class="col-md-3">
+					<div [hidden]="phone.valid || !phone.touched" >
+						<span class="text-danger align-middle">
+							<i class="fa fa-close"></i> phone is required
+						</span>
+					</div>
+				</div> -->
+<!-- 			</div>
+		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="email">{{message.email}}</label>
+				<input type="text" name="email" class="form-control" id="email" ngModel #email='ngModel' placehoder value required>
+<!-- 				<div class="col-md-3">
+					<div [hidden]="email.valid || !email.touched" >
+						<span class="text-danger align-middle">
+							<i class="fa fa-close"></i> email is required
+						</span>
+					</div>
+				</div> -->
+<!-- 			</div>
+		</div> -->
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="website">{{message.website}}</label>
+				<input type="text" name="website" class="form-control" id="website" ngModel #website='ngModel' placehoder value="{{shop.shop_website}}" required>
+			</div>
+		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="shop_desc">{{message.brief_information}}</label>
+				<textarea type="text" name="shop_desc" class="form-control" id="shop_desc" ngModel #brief_information='ngModel' placehoder value="{{shop.shop_desc}}" required></textarea> 
+			</div>
+		</div>
+		<p></p>
+<!-- 		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="brief_information">serviceID</label>
+				<textarea type="text" name="serviceID" class="form-control" id="serviceID" ngModel #brief_information='ngModel' placehoder value required></textarea> 
+			</div>
+		</div>
+		<p></p> -->
+<!-- 		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="brief_information">file upload</label>
+				<input type="file" name="files" class="form-control" id="files" (change)="selectFiles($event)" ngModel #files='ngModel' multiple>
+			</div>
+		</div>
+		<p></p> -->
+		<div class="row" [hidden]="!isRegistered">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<button class="btn btn-primary" type="submit">{{message.register}}</button>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset [hidden]="(!formSubmit && !saveSuccess)">
+			<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="files">file upload</label>
+				<div class="row" [hidden]= "isRegistered">
+					<button class="btn btn-primary" id="leftBtn" type="button" (click)="onChangePhoto(-1)"><</button>
+				<img src="{{photos[photosCount]}}">
+					<button class="btn btn-primary" id="rightBtn" type="button" (click)="onChangePhoto(1)">></button>
+				</div>
+				<input type="file" name="files" class="form-control" id="files" (change)="selectFiles($event)" ngModel #files='ngModel' multiple>
+			</div>
+		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-2" [hidden]="!isRegistered">
+				<button class="btn btn-primary" type="submit">{{message.register}}</button>
+			</div>
+			<div class="col-md-2" [hidden]="isRegistered">
+				<button class="btn btn-primary" type="submit">{{message.edit}}</button>
+			</div>
+			<div class="col-md-3" [hidden]="isRegistered">
+				<a routerLink="/admin/shopList"  routerLinkActive="active" class="btn btn-primary">{{message.cancel}}</a>
+			</div>
+		</div>
+		</fieldset>
+	</form>
+
+	<!-- <form class="uk-form" [hidden]="!formSubmit && !saveSuccess" #f="ngForm" (ngSubmit)="onUpdatePhoto(f); formSubmit = !formSubmit">
+		<fieldset>
+			<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<label for="files">file upload</label>
+				<input type="file" name="files" class="form-control" id="files" (change)="selectFiles($event)" ngModel #files='ngModel' multiple>
+			</div>
+		</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<button class="btn btn-primary" type="submit">{{message.register}}</button>
+			</div>
+		</div>
+		</fieldset>
+	</form> -->
+	</section>
+</div>

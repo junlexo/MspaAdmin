@@ -5,6 +5,8 @@ import { AdminEmployeeGroupListComponent } from './../employee-group/employee-gr
 import { AdminTreatmentTypeAddComponent } from './../treatment-type/treatment-type-add/treatment-type-add.component';
 import { AdminTreatmentTypeListComponent } from './../treatment-type/treatment-type-list/treatment-type-list.component';
 import { AdminShopListComponent } from './../shop/shop-list/shop-list.component';
+import { AdminShopAddComponent } from './../shop/shop-add/shop-add.component';
+import { AdminShopEditComponent } from './../shop/shop-edit/shop-edit.component';
 import { AdminComponent } from './../admin.component';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -49,6 +51,14 @@ import { RouterModule } from '@angular/router';
           {
              path: 'shopList',
              component: AdminShopListComponent
+          },
+          {
+             path: 'shop',
+             component: AdminShopAddComponent
+          },
+          {
+             path: 'shop/:id',
+             component: AdminShopAddComponent
           },
           {
             path: 'dashboard1',

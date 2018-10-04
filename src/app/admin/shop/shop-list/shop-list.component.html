@@ -6,7 +6,7 @@
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-			<li class="active">List List Shop</li>
+			<li class="active">List Shop</li>
 		</ol>
 	</section>
 	<section class="content">
@@ -16,25 +16,47 @@
 			      <thead>
 			        <tr>
 			          <th>#</th>
-			          <th>Tên Cửa Hàng</th>
-			          <th>{{message.adress}}</th>	
-			          <th>Loại dịch vụ</th>		          
-			          <th>Quận</th>
-			          <th>Thành phố</th>
+			          <th>{{message.shop_name}}</th>
+			          <th>{{message.address}}</th>	
+			          <th>{{message.service_type}}</th>		          
+			          <th>{{message.province}}</th>
+			          <th>{{message.country}}</th>
+			          <th>Status</th>
+			          <th></th>
 			        </tr>
 			      </thead>
 			      <tbody>
 			        <tr *ngFor="let shop of ShopList; let i=index">
 			          <td>{{i+1}}</td>
-			          <td><a class="btn btn-link" routerLink="/admin/groupEmployee/{{shop.id}}" routerLinkActive="active">{{shop.shop_name}}</a></td>
-			          <td>{{shop.address}}</td>
-			          <td>{{shop.service_type}}</td>
-			          <td>{{shop.district}}</td>
-			          <td>{{shop.province}}</td>			          
+			          <td><!-- <a class="btn btn-link" routerLink="/admin/edit/{{shop.id}}" routerLinkActive="active"></a> -->
+<!-- 					 	<form class="uk-form" #f="ngForm" (ngSubmit)="onSelete(f)">
+  							<input md-input type="hidden" name="shopId" id="shopId" [(ngModel)]="shop.id">	
+  							<button class="btn btn-link" type="submit">{{shop.shop_name}}</button>
+						</form> -->
+						<button class="btn btn-link" type="button" routerLink="/admin/shop/{{shop.shopID}}" routerLinkActive="active">{{shop.shop_name}}</button>
+			          </td>
+			          <td>{{shop.shop_addr}}</td>
+			          <td>{{shop.Service.service_title}}</td>
+			          <td>{{shop.Province.province_name}}</td>
+			          <td>{{shop.Country.country_name}}</td>
+			          <td>{{shop.Status.status_title}}</td>
+			          <td>
+			          	<a class="btn btn-link" routerLink="/admin/shop/{{shop.shopID}}" routerLinkActive="active">{{message.edit}}</a>
+						|
+						<button class="btn btn-link" type="button" value="delete" (click)="onDelete(shop.shopID)">{{message.delete}}</button>
+
+<!-- 			          	<form class="uk-form" #f="ngForm" (ngSubmit)="onChange(f)">
+  							<input md-input type="hidden" name="shopId" id="shopId" [(ngModel)]="shop.id">	
+  							<button class="btn btn-link" type="submit" name="action" [ngModel]="action" value="" #edit="ngModel">{{message.edit}}</button>
+  							 c
+  							<button class="btn btn-link" type="submit" name="action" [ngModel]="action" #delete="ngModel">{{message.delete}}</button>
+						</form> -->
+					  </td>			          
 			        </tr>
 			      </tbody>
 			    </table>
 			</div>
+			<a routerLink="/admin/shop" routerLinkActive="active" class="btn btn-primary">{{message.register}}</a>
 		</div>
 	</section>
 </div>

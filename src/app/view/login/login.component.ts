@@ -29,7 +29,7 @@ export class AdminLoginComponent implements OnInit {
             if(!error_code)
             {
               localStorage.setItem('token', data.token);
-              localStorage.setItem('userId', data.userId);
+              localStorage.setItem('adminID', data.adminID);
               this.router.navigate(['/admin']);
             }
             else

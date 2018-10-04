@@ -10,9 +10,9 @@ export class AdminLeftSideComponent implements OnInit {
   constructor(private _authService: AuthService) { }
 
   ngOnInit() {  	
-  	this._authService.getUserId(localStorage.getItem('userId')).subscribe(
+  	this._authService.getUserId(localStorage.getItem('adminID')).subscribe(
           data => {          
-            this.currentUser = data.user.username;
+            this.currentUser = data.admin.ad_username;
           },
           error => {
             console.error(error);
